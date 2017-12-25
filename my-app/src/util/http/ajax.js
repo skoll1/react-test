@@ -96,6 +96,10 @@ export default async function ajax(url,{method='GET',type='json',getHeaders={"Co
             // 为什么错误也是从这个里面给出的，请求地址的错误是服务器给的么？
         }
         xhr.send(null);
+
+        const promise=new Promise((resolve,reject)=>{
+            
+        })
         
     }
 }
