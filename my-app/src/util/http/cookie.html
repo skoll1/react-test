@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script type="text/javascript">
+        Cookies.set('name', 'value');
+        console.log('ok')
+    </script> -->
+    <script>
+                
+                var xhr=new XMLHttpRequest();
+                xhr.open('get','https://www.easy-mock.com/mock/594fa9d19adc231f3569cdfc/example/proxy');
+                
+                  xhr.open('get','https://cnodejs.org/api/v1/topics');
+                
+                  
+                  xhr.onerror=function(e){
+                    console.log(e);
+                }
+
+
+                xhr.onload=function(e){
+                console.log(e)
+                // 为什么错误也是从这个里面给出的，请求地址的错误是服务器给的么？
+            }
+            xhr.send()
+    </script>
+</body>
+</html>
