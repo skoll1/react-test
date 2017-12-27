@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import reactDOM from 'react-dom'
 // import logo from './logo.svg';
 import './App.css';
 // import ck from 'js-cookie';
@@ -14,14 +15,26 @@ import './App.css';
 // import ULMAP from './demo/Object.jsx'
 // import Extends  from './demo/extend.jsx'
 // import ThinkInReact  from './demo/thinkInReact.jsx'
+import For  from './demo/for.jsx'
+import Ref  from './demo/ref.jsx'
 
 
 // 引入js函数，只要是输出的时候使用的是export输出，引入的时候必须加大括号{}才不会出错
 // import {Cookie} from './util/http/cookie.js'
 
-import ajax from './util/http/ajax.js'
+// import ajax from './util/http/ajax.js'
+
+import Pro from './demo/portals.jsx';
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state=({
+      showModel:false,
+      name:'haha'
+    })
+    this.handleShow=this.handleShow.bind(this)
+  }
   componentDidMount() {
     // Cookie('123','hahahah');
     // Cookie('hahah','789');
@@ -33,19 +46,28 @@ class App extends Component {
     // ajax
     // 图片
     // http://pic4.nipic.com/20091217/3885730_124701000519_2.jpg
-    ajax('https://cnodejs.org/api/v1/topics')
-      .then((data) => {
-        console.log(data)
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+    // ajax('https://cnodejs.org/api/v1/topics')
+    //   .then((data) => {
+    //     console.log(data)
+    //   })
+    //   .catch((e) => {
+    //     console.log(e)
+    //   }) 
+   
+    // render()渲染组件时返回的是组件实例，render()渲染dom的时候，返回的是具体的dom节点。
+    // console.log(this.app)
+    // console.log(reactDOM.findDOMNode(this.ref).state)
 
-    
+  }
+  handleShow(){
+    this.setState({
+      showModel:true,
+    })
+    console.log(this.state)
   }
   render() {
     return (
-      <div className="App">
+      <div className="App" ref={(app)=>{this.app=app}}>
         {/* 官方demo练习 */}
         {/* <ULMAP/> */}
         {/* <Extends left={<IMG />} right={<INPUT />} /> */}
@@ -58,7 +80,13 @@ class App extends Component {
 
         {/* <ThinkInReact/> */}
 
+        {/* <For len='10'/> */}
 
+        {/* <Ref ref={(ref)=>{this.ref=ref}}/> */}
+
+          <button onClick={this.handleShow}>show</button>
+          {this.state.showModel?<Pro />:null}
+          
 
       </div>
     );
