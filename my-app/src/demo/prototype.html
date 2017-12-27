@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name){
+            this.name=name
+        }    
+        Person.prototype={
+            getName(){
+                return this.name;
+            }
+        }
+
+        function P2(age){
+            this.age=age;
+        }
+        P2.prototype=new Person('lll');
+        // 原型继承
+        P2.prototype={
+            getAge(){
+                return this.age;
+            }
+        }
+        // 原型继承
+        // 23-25行的代码只能选择一个实现，不能支持多重继承。
+
+        var a=new P2(22);
+
+
+        // 类继承
+        function A(x){
+            this.x=x;
+        }
+        A.prototype.get=function(){
+            return this.x;
+        }
+
+        function B(x,y){
+            this.y=y;
+            A.call(this,x);
+            // 只是相当于执行了
+            // this.x=x这一行。
+        }
+        B.prototype=new A()
+        B.prototype.getB=function(){
+            return this.y;
+        }
+        var b=new B(1,2);
+        console.log(b);
+    
+    </script>
+</body>
+</html>
