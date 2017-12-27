@@ -21,6 +21,11 @@ import './App.css';
 
 import ajax from './util/http/ajax.js'
 
+// import Transition from './element/util/transition.jsx'; 
+
+import IndexElem from './element/index.jsx'
+import Alert from './element/show/alert.jsx'
+
 class App extends Component {
   componentDidMount() {
     // Cookie('123','hahahah');
@@ -58,7 +63,11 @@ class App extends Component {
 
         {/* <ThinkInReact/> */}
 
-
+        {/* <Transition>
+          <h1>hahah</h1>
+        </Transition> */}
+        
+        <IndexElem />
 
       </div>
     );
