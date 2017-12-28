@@ -6,12 +6,17 @@ class For extends Component {
         this.state=({
 
      })
-   } 
+   }
+   handleClick(e){
+       console.log(e.target.dataset.letter)
+       console.log(e.target.getAttribute('data-letter'))
+   }
+   
     render() {
       var list=(len)=>{
           var res=[];
           for(var i=0;i<len;i++){
-              res.push(<h2 key={i}>hello react</h2>)
+              res.push(<h2 key={i} data-letter={i} onClick={this.handleClick}>hello react</h2>)
           }
           return res;
       }

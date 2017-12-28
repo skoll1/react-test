@@ -83,7 +83,7 @@ class App extends Component {
 
         {/* <ThinkInReact/> */}
 
-        {/* <For len='10'/> */}
+        <For len='10'/>
 
         {/* <Ref ref={(ref)=>{this.ref=ref}}/> */}
 
