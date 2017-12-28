@@ -31,21 +31,25 @@ function checkStatus(response) {
 // header设置不进去。。。
 // 默认的参数对象都要这样写
 export default async function ajax(url,{method='GET',type='json',getHeaders={"Content-Type": "text/plain",},timeout=1000,}={}){
-    if (!window.fetch) {
+    if (window.fetch) {
         console.log('fetch')
         var result = null;
         if (method === 'GET'||method==='get') {
-            console.log('options')
-            console.log(getHeaders)
             result = await fetch(url, {
                 method: method,
                 //解决深度拷贝引用地址问题
-                headers:JSON.parse(JSON.stringify(getHeaders)),
+                // headers:JSON.parse(JSON.stringify(getHeaders)),
             }) 
                 .then(checkStatus)
                 .then((res) => {
+                    console.log(res.headers.get('Last-Modified'))
+                    // 这里为什么只能读到一个参数。。
+                    res.headers.forEach((data)=>{
+                        console.log(data);
+                    })
+                    console.log(res)
                     var fn = null;
-                    console.log(res.headers.get("Content-Type"))
+    
                     switch (type) {
                         case 'json':
                             // return res.json();

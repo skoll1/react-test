@@ -13,23 +13,27 @@
         console.log('ok')
     </script> -->
     <script>
-                
-                var xhr=new XMLHttpRequest();
-                xhr.open('get','https://www.easy-mock.com/mock/594fa9d19adc231f3569cdfc/example/proxy');
-                
-                  xhr.open('get','https://cnodejs.org/api/v1/topics');
-                
-                  
-                  xhr.onerror=function(e){
-                    console.log(e);
-                }
+    //fetch test 1
+    // 使用构造器配置Request() 
+    var url='https://cnodejs.org/api/v1/topics'    
 
-
-                xhr.onload=function(e){
-                console.log(e)
-                // 为什么错误也是从这个里面给出的，请求地址的错误是服务器给的么？
-            }
-            xhr.send()
+    
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type', '*');
+    
+    var myInit = { method: 'GET',
+                //    headers: myHeaders,
+                   mode: 'cors',
+                   cache: 'default' };
+    
+    var myRequest = new Request('https://pic.36krcnd.com/201712/27103819/5gsfrd91cnubxw1j!yestone');
+    
+    fetch('https://pic.36krcnd.com/201712/27103819/5gsfrd91cnubxw1j!yestone',myInit).then(function(response) {
+      return response.blob()
+    }).then(data=>{
+        console.log(window.URL.createObjectURL(data))
+    })
+    
     </script>
 </body>
 </html>

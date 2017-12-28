@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import PropTypes from 'prop-type'
+// import PropTypes from 'prop-type'
 
 export default class Alert extends Component{
     constructor(props){
@@ -18,5 +18,15 @@ export default class Alert extends Component{
         if(this.props.onClose){
             this.props.onClose();
         }
+    }
+    render(){
+        const {title,type}=this.props
+        return (
+            <div>
+                <div className="top" className={`${this.props.type}`}>
+                    {this.props.title}
+                </div>
+            </div>
+        )
     }
 }

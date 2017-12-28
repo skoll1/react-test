@@ -22,9 +22,14 @@ import Ref  from './demo/ref.jsx'
 // 引入js函数，只要是输出的时候使用的是export输出，引入的时候必须加大括号{}才不会出错
 // import {Cookie} from './util/http/cookie.js'
 
-// import ajax from './util/http/ajax.js'
+import ajax from './util/http/ajax.js'
 
 import Pro from './demo/portals.jsx';
+
+// import Transition from './element/util/transition.jsx'; 
+
+import IndexElem from './element/index.jsx'
+import Alert from './element/show/alert.jsx'
 
 class App extends Component {
   constructor(){
@@ -46,7 +51,7 @@ class App extends Component {
     // ajax
     // 图片
     // http://pic4.nipic.com/20091217/3885730_124701000519_2.jpg
-    // ajax('https://cnodejs.org/api/v1/topics')
+    ajax('https://cnodejs.org/api/v1/topics')
     //   .then((data) => {
     //     console.log(data)
     //   })
@@ -83,14 +88,24 @@ class App extends Component {
 
         {/* <ThinkInReact/> */}
 
+<<<<<<< HEAD
         <For len='10'/>
+=======
+
+        {/* <Transition>EAD
+          <h1>hahah</h1>
+        </Transition> */}
+        
+        <IndexElem />
+
+        {/* <For len='10'/> */}
+>>>>>>> 18c4cdad814a56b8cb091a4bccd49d6762a5c244
 
         {/* <Ref ref={(ref)=>{this.ref=ref}}/> */}
 
           <button onClick={this.handleShow}>show</button>
           {this.state.showModel?<Pro />:null}
           
-
       </div>
     );
   }
