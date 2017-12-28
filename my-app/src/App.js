@@ -59,6 +59,9 @@ class App extends Component {
     // console.log(reactDOM.findDOMNode(this.ref).state)
 
   }
+  componentDidCatch(err,info){
+    
+  }
   handleShow(){
     this.setState({
       showModel:true,

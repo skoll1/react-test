@@ -15,11 +15,12 @@ class For extends Component {
           }
           return res;
       }
-
+// react中使用for循环的方法，把他放在外面做成一个函数
       return (
         <div className=''>
             <div>
                 hello{list(this.props.len)}
+                {/* 直接渲染函数 */}
             </div>
         </div>
       )

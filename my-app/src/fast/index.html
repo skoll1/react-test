@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>性能优化</h1>
+    <ul>
+        <li>
+            使用生产版本
+        </li>
+        <li>
+            重写shouldComponentUpdate()来提升速度，他是在重新渲染过程开始前触发的，默认返回值true.
+        </li>
+        <li>
+            不可突变数据的设置。
+        </li>
+        <li>
+            组件更新的对比算法：
+            <ul>
+                <li>
+                    元素的不同类型
+                </li>
+                <li>
+                    相同元素的属性是否相同
+                </li>
+                <li>
+                    列表比较：引入key，当子节点有key的时候，react使用key来匹配原本树的子节点和新树的子节点
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
