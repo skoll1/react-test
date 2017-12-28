@@ -8,14 +8,8 @@
 //     "Content-Type": "application/x-www-form-urlencoded"
 // })
 
-var myInit = {
-    method: 'GET',
-    getHeaders:{
-        "Content-Type": "text/plain"
-    },
-    mode: 'cors',
-    cache: 'default'
-};
+// mode cors:同域和带有cors响应头的跨域下可以请求成功。same-origin:只是同域下才能请求成功
+// credentials:include 跨域的时候携带cookie.same-origin：相同域名才会发送cookie.
 // 写进去有问题
 function checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
@@ -30,7 +24,7 @@ function checkStatus(response) {
 
 // header设置不进去。。。
 // 默认的参数对象都要这样写
-export default async function ajax(url,{method='GET',type='json',getHeaders={"Content-Type": "text/plain",},timeout=1000,}={}){
+export default async function ajax(url,{method='GET',type='json',getHeaders={"Content-Type": "text/plain",},timeout=1000,mode="cors",credentials="include",cache="default"}={}){
     if (window.fetch) {
         console.log('fetch')
         var result = null;
@@ -107,3 +101,7 @@ export default async function ajax(url,{method='GET',type='json',getHeaders={"Co
         
     }
 }
+
+
+// 问题headers加不到里面去
+// 错误处理机制不完善。
