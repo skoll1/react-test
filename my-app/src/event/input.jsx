@@ -11,6 +11,8 @@ class INPUT extends Component{
         this._inputChange=this._inputChange.bind(this)
         this.select=this.select.bind(this)
         this.handleChange=this.handleChange.bind(this)
+        this.radioChange=this.radioChange.bind(this)
+        this.radioSelect=this.radioSelect.bind(this)
 
 
     }
@@ -35,9 +37,27 @@ class INPUT extends Component{
         console.log('松开按键')
     }
     handleChange(e){
+       
+        // console.log(e.target.value)
+        var value=e.target.value;
+        // this.setState((value)=>{
+        //     // console.log(value.select)
+        //     select:value
+        // },()=>{
+        //     console.log(this.state)
+        // })
+
         this.setState({
-            select:e.target.value
-        })
+            select: value
+        },()=>{
+                console.log(this.state)
+            })
+    }
+    radioChange(e){
+        // console.log(e.target.checked)
+    }
+    radioSelect(e){
+        console.log(e.target.checked)
     }
     render(){
         return(
@@ -52,12 +72,14 @@ class INPUT extends Component{
 
                 {/* <textarea name="" id="" cols="30" rows="10" value={this.state.value} onChange={this.handleChange}>
                 </textarea> */}
+                <input type="radio" onChange={this.radioChange} onSelect={this.radioSelect}/>
 
-                <select name="" id="" value={this.state.select} onChange={this.handleChange}>
+                <select name="" id="" onChange={this.handleChange}>
                     <option value="name">name</option>
                     <option value="age">age</option>
                     <option value="work">work</option>
                 </select>
+                <span>{this.state.select}</span>
             </div>
         )
     }

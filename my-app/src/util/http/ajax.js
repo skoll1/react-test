@@ -32,7 +32,7 @@ export default async function ajax(url,{method='GET',type='json',getHeaders={"Co
             result = await fetch(url, {
                 method: method,
                 //解决深度拷贝引用地址问题
-                // headers:JSON.parse(JSON.stringify(getHeaders)),
+                headers:JSON.parse(JSON.stringify(getHeaders)),
             }) 
                 .then(checkStatus)
                 .then((res) => {

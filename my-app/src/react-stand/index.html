@@ -8,15 +8,25 @@
 </head>
 <body>
     <h1>其他注意事项</h1>
+    <h2>站在不同的高度，看到的风景是不同的</h2>
     <ul>
         <li>
-                还可以使用Object.assign()来一次添加多个prototype方法函数。
+         还可以使用Object.assign()来一次添加多个prototype方法函数。
         </li>
         <li>
             给一个类添加原型方法的三种方式
         </li>
         <li>
-            // 所有的实例共享一个原型对象。使用__proto__方法改写原型，必须相当谨慎，因为改变这个会改变类的原始定义，影响到所有的实例
+            所有的实例共享一个原型对象。使用__proto__方法改写原型，必须相当谨慎，因为改变这个会改变类的原始定义，影响到所有的实例
+        </li>
+        <li>
+          这也是个方法，只不过默认返回的是这个对象实例本身，即使返回的是一个空类，js也会自动添加一个空的constructor方法。当然也可以认为的改变指向.
+        </li>
+        <li>
+            但是派生类的constructor必须定义，也就是说，继承的class必须定义这个东西。并在其中调用super函数以确保父类构造函数逻辑可以执行
+        </li>
+        <li>
+            constructor中的this指向新创建的实例对象，利用this可以往新创建的实例对象扩展属性。
         </li>
         <li>
             给一个添加表达式可以让他变成一个自执行类
@@ -26,9 +36,39 @@
         </li>
         <li>
             私有方法和私有属性都没有规定
+            <ul>
+                <li>
+                    使用闭包来实现私有属性
+                </li>
+            </ul>
+        </li>
+        <li>
+            getter/setter：只要this.name中的属性名和set name/get name后面的name一致，此时对this.name就会调用setter/getter，也就是说setter/getter是hook函数，而真实存储的变量是setName,我们可以在代码中通过get Name()得到他
+        </li>
+        <li>
+            当一个属性只有getter属性没有setter的时候，是无法进行赋值操作的时候，这一点是相当的坑。
+        </li>
+        <li>
+            es6中引入了的新的在对象中定义的方法的书写方式。
+        </li>
+        <li>
+            mixin概念
+            <ul>
+                <li>
+                    把一个对象的方法和属性拷贝到另一个对象上面，注意这个和继承有区别，这个用来实现多继承
+                </li>
+            </ul>
+        </li>
+        <li>
+            new.target可以制定出不能独立使用，必须继承后才能使用的类。
+        </li>
+        <li>
+            静态方法是可以定义和使用的，但是静态属性还是在外面定义才可以。
         </li>
     </ul>
-    <script src='./class.js'>
+    <!-- <script src='./class.js'>
+    </script> -->
+    <script src="./extend.js">
     </script>
 </body>
 </html>

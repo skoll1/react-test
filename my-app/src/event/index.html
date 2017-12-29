@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DOM元素</h1>
+    <ul>
+        <li>
+            input-radio,checkbox支持checked属性。e.target.checked.
+        </li>
+        <li>
+            onChange函数，无论form表单何时发生变化，这个事件都会被触发。
+        </li>
+        <li>
+            selected:options组件支持这个
+        </li>
+        <li>
+            事件池：默认是无法以异步的方式访问事件，如果想要访问异步事件，必须在事件回掉中调用event.persist()方法。
+        </li>
+        <li>
+            react标准化了事件。默认的事件处理函数由冒泡阶段触发。如果在事件名后面加capture就可以在事件捕获阶段注册事件处理函数。onClick==onClickCapture()
+        </li>
+    </ul>
+</body>
+</html>

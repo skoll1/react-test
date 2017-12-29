@@ -7,7 +7,7 @@ import './App.css';
 
 // componsnts
 // import IMG from './event/event.jsx'
-// import INPUT from './event/input.jsx'
+import INPUT from './event/input.jsx'
 // import MOUSE from './event/mouse.jsx'
 // 引入eport default输出的函数不用使用括号，还可以为该函数指定任意的名字。
 
@@ -31,6 +31,11 @@ import Pro from './demo/portals.jsx';
 import IndexElem from './element/index.jsx'
 import Alert from './element/show/alert.jsx'
 
+import Board from './event/ClipboardEvent.jsx'
+
+
+import AA from './animate/a1'
+
 class App extends Component {
   constructor(){
     super()
@@ -51,7 +56,7 @@ class App extends Component {
     // ajax
     // 图片
     // http://pic4.nipic.com/20091217/3885730_124701000519_2.jpg
-    ajax('https://cnodejs.org/api/v1/topics')
+    // ajax('https://cnodejs.org/api/v1/topics')
     //   .then((data) => {
     //     console.log(data)
     //   })
@@ -80,6 +85,8 @@ class App extends Component {
         {/* <ULMAP/> */}
         {/* <Extends left={<IMG />} right={<INPUT />} /> */}
 
+
+        {/* <INPUT /> */}
         {/* <Extends>
               <MOUSE/>
               hahahahah
@@ -88,24 +95,27 @@ class App extends Component {
 
         {/* <ThinkInReact/> */}
 
-<<<<<<< HEAD
-        <For len='10'/>
-=======
+
+        {/* <For len='10'/> */}
+
 
         {/* <Transition>EAD
           <h1>hahah</h1>
         </Transition> */}
         
-        <IndexElem />
+        {/* <IndexElem /> */}
 
         {/* <For len='10'/> */}
->>>>>>> 18c4cdad814a56b8cb091a4bccd49d6762a5c244
+
 
         {/* <Ref ref={(ref)=>{this.ref=ref}}/> */}
 
-          <button onClick={this.handleShow}>show</button>
+          {/* <button onClick={this.handleShow}>show</button>
           {this.state.showModel?<Pro />:null}
-          
+           */}
+           {/* <Board /> */}
+           
+           <AA />
       </div>
     );
   }
