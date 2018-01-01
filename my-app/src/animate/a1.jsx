@@ -7,28 +7,78 @@ class Demo extends Component {
 
   constructor(props) {
     super(props);
-    this.animation = { left: '20%', yoyo: true, repeat: -1, duration: 1000 };
-    this.handleClick=this.handleClick.bind(this)
+    this.animation = {  
+                      left: '100px',
+                      // 位移变化
+                      // 这个里面的所有属性都是初始的状态。
+                      scale:1,
+                      // 缩放变化
+                      // width:'500px',
+                      // opacity:1,
+                      yoyo: true, 
+                      repeat: -1, 
+                      duration: 1000,
+                      type:'from',
+                      // ease:'easeOutBack',
+                      color:'white'
+                    };
+    this.handleStart=this.handleStart.bind(this)
+    this.handlePause=this.handlePause.bind(this)
+    this.handleReverse=this.handleReverse.bind(this)
     this.state=({
-        paused:true
+        paused:true,
+        reverse:false,
     })
   }
-  handleClick(e){
-      this.setState({
-          paused:!this.state.paused
-      })
-      console.log(this.state)
+  handlePause(){
+    this.setState({
+      paused:true
+    })
+  }
+  handleStart(){
+    this.setState({
+      paused:false
+    })
+  }
+  handleReverse(){
+    this.setState({
+      reverse:true
+    })
+    console.log(this.state)
+  }
+  handleChange(e){
+    // console.log(e)
   }
 
   render() {
     return (
-      <TweenOne
+      <div>
+        <ul>
+          <li>组件更新的参数</li>
+          <li onClick={this.handleStart}>
+            start
+          </li>
+          <li onClick={this.handlePause}>
+            pause
+          </li>
+          <li onClick={this.handleReverse}>
+            reverse
+          </li>
+          <li>
+            animation参数
+          </li>
+        </ul>
+        <TweenOne
         animation={this.animation}
         paused={this.state.paused}
-        style={{ left: '-20%' }}
+        reverse={this.state.reverse}
+        style={{}}
+        // 这个里面都是想要变化之后的样子
         className="code-box-shape"
         onClick={this.handleClick}
-      />
+        onChange={this.handleChange}
+      >利巴特尔</TweenOne>
+      </div>
     );
   }
 }

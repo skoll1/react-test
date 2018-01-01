@@ -51,3 +51,6 @@ var p1=new Person('haha',20);
 
 
 // 获取实例对象的原型Object.getPrototypeOf 
+
+
+
