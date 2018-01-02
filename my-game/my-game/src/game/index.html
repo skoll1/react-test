@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>js中的不可变性</h1>
+    <ul>
+        <li>
+            创建之后不能改变
+        </li>
+        <li>
+            String，number是内置的两个不可变数据类型，string的任何的方法都不会改变原来的string.
+        </li>
+        <li>
+            需要注意的是arr和object
+        </li>
+    </ul>
+    <h2>
+        react中的数据不可变性
+    </h2>
+    <ul>
+        <li>
+            改变数据的方式分为两种，第一种是直接修改已有的变量的值
+        </li>
+        <li>
+            第二种是将已有的变量替换为一个新的变量
+            <ul>
+                <li>
+                    优点如下
+                </li>
+                <li>
+                    轻松实现撤销，重做以及时间旅行，在不改变已有内容的情况下让我们实现在需要的时候随时切换回历史数据
+                </li>
+                <li>
+                    记录变化：因为我们每次返回的都是一个新的对象，所以只要判断这个对象呗替换了，那么其中的数据肯定被变了。
+                </li>
+                <li>
+                    在react中判定何时重新渲染，运用不可变性原则带来的最大好处是，既然我们可以很方便的判断对象是否发生了改变，那么也就很好的决定何时根据数据的改变重新渲染
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+            // 不可变性实战
+            // 不可变数组
+            var arr = new ImmutableArray([1, 2, 3, 4]);
+            var v2 = arr.push(5);
+
+            arr.toArray(); // [1, 2, 3, 4]
+            v2.toArray();  // [1, 2, 3, 4, 5]
+
+            // 不可变对象
+            var person = new ImmutableMap({name: 'Chris', age: 32});
+            var olderPerson = person.set('age', 33);
+
+            person.toObject(); // {name: 'Chris', age: 32}
+            olderPerson.toObject(); // {name: 'Chris', age: 33}
+
+
+    </script>
+</body>
+</html>
