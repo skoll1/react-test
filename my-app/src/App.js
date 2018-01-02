@@ -43,7 +43,7 @@ class App extends Component {
       showModel:false,
       name:'haha'
     })
-    this.handleShow=this.handleShow.bind(this)
+    this.handleShow=this.handleShow.bind(this);
   }
   componentDidMount() {
     // Cookie('123','hahahah');

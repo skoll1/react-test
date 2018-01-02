@@ -8,19 +8,29 @@ class Demo extends Component {
   constructor(props) {
     super(props);
     this.animation = {  
-                      left: '100px',
+                      // left: '100px',
                       // 位移变化
                       // 这个里面的所有属性都是初始的状态。
-                      scale:1,
+                      // scale:1,
                       // 缩放变化
                       // width:'500px',
+                      // 宽度变化
+                      // rotate:360,
+                      // 旋转
                       // opacity:1,
+                      // 渐变
+                      // blur:'10px',
+                      // 模糊
+
                       yoyo: true, 
                       repeat: -1, 
                       duration: 1000,
                       type:'from',
                       // ease:'easeOutBack',
-                      color:'white'
+                      // color:'white'
+                      onComplete:function(e){
+                        console.log(e)
+                      }
                     };
     this.handleStart=this.handleStart.bind(this)
     this.handlePause=this.handlePause.bind(this)
@@ -72,12 +82,18 @@ class Demo extends Component {
         animation={this.animation}
         paused={this.state.paused}
         reverse={this.state.reverse}
-        style={{}}
+        style={
+                { 
+                  // left:'700px',
+                  // transform:'scale(2)'
+                  // transform:'rotate(180deg)'
+                  // opacity:0.2
+                }}
         // 这个里面都是想要变化之后的样子
         className="code-box-shape"
         onClick={this.handleClick}
         onChange={this.handleChange}
-      >利巴特尔</TweenOne>
+      >SB</TweenOne>
       </div>
     );
   }
