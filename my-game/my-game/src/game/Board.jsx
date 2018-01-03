@@ -4,39 +4,24 @@ class Board  extends Component {
     constructor(props) { 
         super(props)
         this.state=({
-            squares:Array(9).fill(null),
-            name:'123',
-            xIsNext:true
+            // 还是可以有自己的单独的state.
      })
      this.handleClick=this.handleClick.bind(this);
    }
-   componentDidMount(){
-        let num=['花花','毛毛'];
-        let first=Math.round(Math.random())
-        this.setState({
-            index:first
-        })
-        
-    }
-
    handleClick(i){
-    //    console.log(i);
-       const squares=this.state.squares.slice();
-    //    如果有人获胜就无法在落子
+       console.log(i);
+       const squares=this.props.squares.slice();
+    // //    如果有人获胜就无法在落子
        if(this.getSuccess(squares)){
            this.setState({
                infoValue:'有人获胜了，不能再点了'
            })
            return false;
        }
-
-       squares[i]=this.state.xIsNext?'X':'O';
-       const index=this.state.index==1?'0':'1'
-       this.setState({
-           squares:squares,
-           xIsNext:!this.state.xIsNext,
-           index:index
-       });
+       squares[i]=this.props.xIsNext?'X':'O';
+       this.props._handleClik(i)
+    
+    //    他们还是解耦的，使用原来的数据改造成redux还是很简单的。
    }
 
    getSuccess(squares){
@@ -61,25 +46,26 @@ class Board  extends Component {
    }
 
    renderSquare(i){
+       //这个i传的真是很有意思，很多需要找到量都直接可以从这个里面拿了。
        return <Square 
-                        value={this.state.squares[i]} 
+                        value={this.props.squares[i]} 
                         handleClick={this.handleClick.bind(this,i)}
                         // props传递函数的时候把state的参数也传递到里面
                         // name={this.state.name}
               />
    } 
     render() {
-      let winner=this.getSuccess(this.state.squares);
+      let winner=this.getSuccess(this.props.squares);
       let status;
       if(winner){
           if(winner=='X'){
-              winner='花花'
-          }else{
               winner='毛毛'
+          }else{
+              winner='花花'
           }
-          status='获胜的一方是：'+winner;
+          status='获胜的一方是：'+winner+':'+'游戏结束';
       }else{
-          status='下一个出发的是：'+(this.state.index==0?'花花':'毛毛');
+          status='下一个出发的是：'+(this.props.nextWho==0?'花花':'毛毛');
         //   这是个什么用法，
       }
       return (
@@ -87,7 +73,6 @@ class Board  extends Component {
                 <h1>Board</h1>
                 <div className="status">
                     {status}
-                    {this.state.infoValue?this.state.infoValue:''}
                 </div>
                 <div className="board-row">
                     {this.renderSquare(0)}
@@ -103,6 +88,9 @@ class Board  extends Component {
                     {this.renderSquare(6)}
                     {this.renderSquare(7)}
                     {this.renderSquare(8)}
+                </div>
+                <div className="show">
+                    {this.props.name}
                 </div>
         </div>
       )
