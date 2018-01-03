@@ -34,7 +34,7 @@ import Alert from './element/show/alert.jsx'
 import Board from './event/ClipboardEvent.jsx'
 
 
-import AA from './animate/a1'
+import AA from './animate/example/delay'
 
 class App extends Component {
   constructor(){

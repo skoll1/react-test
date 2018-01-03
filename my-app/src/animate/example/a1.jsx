@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TweenOne from 'rc-tween-one';
 import PropTypes from 'prop-types';
-import './index.css'
+import '../index.css'
 
 class Demo extends Component {
 
@@ -35,10 +35,10 @@ class Demo extends Component {
     this.handleStart=this.handleStart.bind(this)
     this.handlePause=this.handlePause.bind(this)
     this.handleReverse=this.handleReverse.bind(this)
-    this.state=({
+    this.state={
         paused:true,
         reverse:false,
-    })
+    }
   }
   handlePause(){
     this.setState({
