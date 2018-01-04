@@ -3,6 +3,7 @@ import Board from './Board'
 import {connect} from 'react-redux'
 import {next} from '../redux/actions'
 import GameInfo from './gameInfo'
+import { jump } from '../redux/actions/game/gameAction';
 // 引入方法
 
 
@@ -13,15 +14,22 @@ class Game  extends Component {
             <h1>Game Ok!</h1>
             <div className="game-board">
                 <Board 
-                        squares={this.props.squares}  
+                        squares={this.props.squares}
+                        historyShowBoard={this.props.historyShowBoard}  
                         name={this.props.name} 
                         nextWho={this.props.nextWho} 
-                        _handleClik={this.props.next} 
+                        _handleClik={this.props.next}
+                        currentIndex={this.props.currentIndex}
                         // {...this.props}这个里面就不这样使用了
                 />
             </div>
             <div className="game-info">
-                <GameInfo  historyShowList={this.props.historyShowList} />
+                <GameInfo  historyShowList={this.props.historyShowList} jump={this.props.jump} />
+            </div>
+            <div className="button">
+            <button>
+                        重新开始
+            </button>
             </div>
         </div>
       )
@@ -48,12 +56,16 @@ function mapStateToProps(state){
         nextWho:state.nextReducer.nextWho,
         historyShowBoard:state.nextReducer.historyShowBoard,
         historyShowList:state.nextReducer.historyShowList,
+        currentIndex:state.nextReducer.currentIndex,
     }
 }
 function mapDispatchToProps(dispatch){
     return {
         next:(index)=>{
             dispatch(next(index))
+        },
+        jump:(index)=>{
+            dispatch(jump(index))
         }
     }
 }

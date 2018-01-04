@@ -47,9 +47,18 @@ class Board  extends Component {
 
    renderSquare(i){
        //这个i传的真是很有意思，很多需要找到量都直接可以从这个里面拿了。
+       let value;
+       if(this.props.currentIndex===0||this.props.currentIndex){
+        //    为什么老是选不到0的缘故
+            value=this.props.historyShowBoard[this.props.currentIndex][i]
+            console.log(this.props.historyShowBoard[0])
+       }else{
+            value=this.props.squares[i]
+       }
        return <Square 
-                        value={this.props.squares[i]} 
+                        value={value} 
                         handleClick={this.handleClick.bind(this,i)}
+                        data-index={i}
                         // props传递函数的时候把state的参数也传递到里面
                         // name={this.state.name}
               />

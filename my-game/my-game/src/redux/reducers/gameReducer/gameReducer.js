@@ -1,6 +1,7 @@
 import {
     NEXT,
     // 接收到action的type即可
+    JUMP
 
     // next
 }from '../../actions'
@@ -14,7 +15,7 @@ const initialState={
     name:'你咋不敢和旅长干一架呢？',
     historyShowBoard:[],
     historyShowList:[],
-    stepNumber:0,
+    currentIndex:null,
 }
 
 const nextReducer=function(state=initialState,action){
@@ -27,7 +28,7 @@ const nextReducer=function(state=initialState,action){
 
             // 更新数组
 
-            const nextWho=(state.nextWho==1)?'0':'1';
+            let nextWho=(state.nextWho==1)?'0':'1';
             // 决定下一个是谁
             // 这里好像可以省一个
 
@@ -54,8 +55,23 @@ const nextReducer=function(state=initialState,action){
 
 
             }
+        case JUMP:
+            let currentIndex=state.currentIndex;
+            nextWho=(action.index%2)?'0':'1';
+            currentIndex=action.index
+         
+            
+            return {
+                ...state,
+               currentIndex,
+               nextWho
+            }
+            
+            
+
 
         default:
+            console.log('123')
             return {
                 ...state
             }
@@ -66,3 +82,6 @@ export default nextReducer;
 
 
 // 渲染层那个页面也是很多根据传来的一个数据来计算出其他的状态。
+
+
+// 时隔两个星期再次出现了变量名拼错的sb行为
