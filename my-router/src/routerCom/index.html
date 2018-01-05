@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        简介
+    </h1>
+    <ul>
+        <li>
+            万物皆组件
+        </li>
+        <li>
+            Router:类似于redux中的Provider,他是用来保持与location的同步。
+            <ul>
+                <li>
+                    下面只允许出现一个子元素
+                </li>
+                <li>
+                    是所有路由组件公用的底层接口，一般我们使用的是高级路由
+                </li>
+                <li>
+                    <BrowserRouter>:H5的historey API来保持UI和URL的同步. history在dom上的实现
+                    <ul>
+                        <li>
+                            basename:为所有位置添加一个基准url。假如你想把页面部署到服务器的二级目录，可以使用这个
+                        </li>
+                        <li>
+                            keyLength:num设置里面路由的location的长度。默认是6。作用，点击同一个连接的时候，每次按下该路由的location.key都会改变。通过key的变化来刷新页面。
+                        </li>
+                        <li>
+                            
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <HashRouter>:使用url的hash来保持UI和URL同步. history在旧版浏览器上的实现
+                </li>
+                <li>
+                    <MenoryRouter>:能在内存中保存你对‘url’的历史纪录 history在内存上的实现，用于测试或非dom环境，react Native
+                </li>
+                <li>
+                    <NativeRouter>:为使用react Native提供路由支持
+                </li>
+                <li>
+                    <StaticRouter>:从不会改变地址
+                </li>
+            </ul>
+        </li>
+        <li>
+            <Route>：当location匹配到某些path的时候，渲染某些ui.相当于<Viem>但是他们的显示机制完全不一样。
+                <ul>
+                    <li>
+                        path：路由匹配路径
+                    </li>
+                    <li>
+                        exact：当为true的时候，要求路径和location.pathname完全匹配
+                    </li>
+                    <li>
+                        strict：true的时候，有结尾斜线的路径只能匹配有斜线的location.pathname
+                    </li>
+                    <li>
+                        分类:每一种render method对应不同的使用场景
+                    </li>
+                    <li>
+                        <Route component>:当使用这个组件的时候，router将会使用React.createElement根据给定的component创建一个新的react元素
+                            <ul>
+                                <li>
+                                    render:func。此方法用于内联渲染
+                                </li>
+                                <li>
+                                    children:func. 
+                                </li>
+                            </ul>
+                    </li>
+                    <li>
+                        <Route render>
+                    </li>
+                    <li>
+                        <Route children>
+                    </li>
+                    <li>
+                        传下去的props,注意，是所有的render method都会被传入这些props.
+                    </li>
+                    <li>
+                        match
+                    </li>
+                    <li>
+                        location
+                    </li>
+                    <li>
+                        historey
+                    </li>
+                </ul>
+        </li>
+        <li>
+            link：为应用提供导航
+            <ul>
+                <li>
+                    to:要跳转的路径或地址
+                    <ul>
+                        <li>
+                            str:简单的跳转就直接使用字符串的形式
+                        </li>
+                        <li>
+                            Object：点击这个链接，将要跳转的页面显示此链接对应的内容，又比如支付跳转的时候把商品的价格传递过去。this.props.location.对象的value值。
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    replace:为true的时候，点击链接的时候使用新地址替换旧的访问记录，为false的时候，点击链接后将在原有访问历史纪录的基础上添加一个新的纪录。默认为false.
+                    <ul>
+                        <li>
+                            使用场景不明
+                        </li>
+                        <li>
+                            路由选项卡的时候使用
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            NavLink:需要导航有‘激活状态’
+            <ul>
+                <li>
+                    属性
+                </li>
+                <li>
+                    activeClassName:str.直接添加样式名
+                </li>
+                <li>
+                    activeStyle: object.如果不想使用class样式名也可以使用style
+                </li>
+            </ul>
+        </li>
+        <li>
+            Switch:只渲染出第一个与当前访问地址匹配的Route或者Redirect。
+            <ul>
+                <li>
+                    可以将多个route使用到页面中，侧边栏，面包屑等
+                </li>
+                <li>
+                    转场动画的使用
+                </li>
+            </ul>
+        </li>
+        <li>
+            Prompt:当用户离开时做一些提示
+            <ul>
+                <li>
+                    message:str
+                </li>
+                <li>
+                    message:func
+                </li>
+                <li>
+                    when:bool。设置一定的条件决定是否要启用Prompt
+                </li>
+            </ul>
+        </li>
+        <li>
+            history：
+            <ul>
+                <li>
+                    属性：
+                </li>
+                <li>
+                    length:历史纪录的条数
+                </li>
+                <li>
+                    action执行跳转到当前页面执行的动作 push,replace,pop
+                </li>
+                <li>
+                    pathname:str url路径
+                </li>
+                <li>
+                    search：str url中的查询字符串
+                </li>
+                <li>
+                    hash:str url中的hash片段
+                </li>
+                <li>
+                    state:str 向下一个路由传递的数据,可以是Object。
+                </li>
+                <li>
+                    方法：
+                </li>
+                <li>
+                    push
+                </li>
+                <li>
+                    replace
+                </li>
+                <li>
+                    go(n)
+                </li>
+                <li>
+                    goBack()
+                </li>
+                <li>
+                    goForward()
+                </li>
+                <li>
+                    block()阻止跳转
+                </li>
+            </ul>
+        </li>
+        <li>
+            location：你当前的位置，将要去的位置，或是之前所在的位置
+            <ul>
+                <li>
+                    获取方式
+                </li>
+                <li>
+                    Route component中，以this.props.location获取
+                </li>
+                <li>
+                    Route render中，({location})=>{}
+                </li>
+                <li>
+                    Route children,以({location})=>{}获取
+                </li>
+                <li>
+                    withRouter,this.props.location的方式获取
+                </li>
+                <li>
+                    location对象是不会发生改变，因此可以在生命周期的回调函数中使用location对象来查看当前页面的访问地址是否发生改变。这种技巧在获取远程数据和使用动画的时候非常有用。
+                </li>
+                <li>
+
+                </li>
+            </ul>
+        </li>
+        <li>
+            match:包含了route path 如何与url匹配的信息，具有以下属性
+            <ul>
+                <li>
+                    parsms:object路径参数，通过解析url中的动态路由获得键值对。
+                </li>
+                <li>
+                    isExact:true.整个路由都需要匹配
+                </li>
+                <li>
+                    path:str 用来匹配的路径模式 用于创建嵌套的<Route>
+                </li>
+                <li>
+                    url:str url匹配的部分，用于嵌套link
+                </li>
+            </ul>
+        </li>
+        <li>
+            v4路由设计思想
+            <ul>
+                <li>
+                    把react-router当成是react组件来看，每个router负责UI的渲染工作
+                </li>
+                <li>
+                    将Route作为普通的react组件来看，每个router也负责UI的渲染工作。整个router是在react组件的大框架下运转的
+                </li>
+                <li>
+                    route的作用此刻不是提供路由配置，而是一个普通的ui组件，不管请求的路径是什么，route组件总是会被渲染，只不过在route内部会判断请求路径是否与当前的那个path匹配，如果匹配，就会把route component属性所指的那个组件作为子组件渲染出来，如果不匹配，会渲染一个null.
+                </li>
+                <li>
+                    这种模式就是动态路由模式，动态路由模式的发挥的作用是在组件渲染的时候，而不是提前通过配置的方式
+                </li>
+                <li>
+                    既然是组件，那么传的props
+                    <ul>
+                        <li>
+                            history:router组件会为整个app组件创建一个history实例
+                            <ul>
+                                <li>
+                                    每个router组件都会创建一个history.history对象，用来记录当前路径，上一步也存在堆栈中。
+                                </li>
+                                <li>
+                                    这个history是react开发的一个库，hsitory专门提供了一系列简洁的api来操作路径的变化。
+                                </li>
+                                <li>
+                                    当点击link的时候，会触发history.push()方法。使用<Redirect>会调用history.replace()
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            match:当路由路径和当前路径匹配成功之后，会生成一个对象match。有以下信息
+                            <ul>
+                                <li>
+                                    match.url:返回url匹配部分的字符串--创建嵌套的<Link>
+                                </li>
+                                <li>
+                                    match.path:返回路由路径字符串，用来创建嵌套的<Route>
+                                </li>
+                                <li>
+                                    match.isExact:返回布尔值。如果准确(没有多余的字符)匹配则返回true.
+                                </li>
+                                <li>
+                                    match.params 返回一个键值对
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    优点
+                    <ul>
+                        <li>
+                            他是同时负责所有ui的渲染工作的，并不是单纯的路由配置工作
+                        </li>
+                        <li>
+                            你可以在任意时间，任意的地点添加新的route。
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            路由系统设计思路,基本原理
+            <ul>
+                <li>
+                    保证视图和url的同步
+                </li>
+            </ul>
+        </li>
+        <li>
+            深入理解<Route>如何运行。
+                <ul>
+                    <li>
+                        route有三个可以用来定义渲染的内容的props:
+                    </li>
+                    <li>
+                        component:当url匹配的时候，router会将传递的组件使用react.createElement来生成一个react元素
+                    </li>
+                    <li>
+                        render:适合行内渲染。在当前路径匹配路由的时候，render prop期望一个函数返回一个元素。
+                    </li>
+                    <li>
+                        children:期望一个函数返回一个react元素。然而，不管路径是否匹配，children都会渲染
+                    </li>
+                    <li>
+                        URL参数的传递
+                    </li>
+                </ul>
+        </li>
+        
+    </ul>
+    <script>
+    // 简单实现机制
+    window.addEventListener('hashchange', () => {
+      this.setState({
+        route: window.location.hash.substr(1)
+      })
+    })
+    
+    </script>
+</body>
+</html>
