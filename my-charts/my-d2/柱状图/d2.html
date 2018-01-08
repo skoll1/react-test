@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://gw.alipayobjects.com/os/antv/assets/g2/3.0.4-beta.2/g2.min.js"></script>
+</head>
+<body>
+    <div id="d2">
+
+    </div>
+    <script>
+        const data = [
+  { name: 'John', vote: 35654 },
+  { name: 'Damon', vote: 65456 },
+  { name: 'Patrick', vote: 45724 },
+  { name: 'Mark', vote: 13654 }
+];
+const imageMap = {
+  'John': 'https://zos.alipayobjects.com/rmsportal/mYhpaYHyHhjYcQf.png',
+  'Damon': 'https://zos.alipayobjects.com/rmsportal/JBxkqlzhrlkGlLW.png',
+  'Patrick': 'https://zos.alipayobjects.com/rmsportal/zlkGnEMgOawcyeX.png',
+  'Mark': 'https://zos.alipayobjects.com/rmsportal/KzCdIdkwsXdtWkg.png'
+}
+
+const chart = new G2.Chart({
+  container : 'd2',
+  width : 600,
+  height : 250
+});
+chart.source(data, {
+  vote: {
+    min: 0
+  }
+});
+chart.legend(false);
+chart.axis('name', {
+  label: {
+    htmlTemplate: value => {
+      return '<img src="' +imageMap[value] + '" style="width:30px;max-width:none;"/>';
+    }
+  },
+  tickLine: null
+});
+chart.axis('vote',{
+    title:{
+        textStyle:{
+            fontsize:12,
+            textAlign:'center',
+            fill:'#999'
+        },
+        alias:'王尼玛'
+    },
+})
+chart.interval()
+  .position('name*vote')
+  .color('name', [ '#7f8da9', '#fec514', '#db4c3c', '#daf0fd' ])
+  .size(20)
+  .label('name');
+chart.render();
+    </script>
+</body>
+</html>
