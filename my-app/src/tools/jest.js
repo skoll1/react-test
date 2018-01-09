@@ -1,0 +1,1 @@
+// jest和snapshots+enzyme超级简单的react组件测试api形成了一个很强的测试组合
