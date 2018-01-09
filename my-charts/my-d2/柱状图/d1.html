@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 引入在线资源 -->
+<script src="https://gw.alipayobjects.com/os/antv/assets/g2/3.0.4-beta.2/g2.min.js"></script>
+</head>
+<body>
+    <div id="d1">
+
+    </div>
+    <script>
+        const data=[
+        { genre: 'Sports', sold: 275 },
+        { genre: 'Strategy', sold: 115 },
+        { genre: 'Action', sold: 120 },
+        { genre: 'Shooter', sold: 350 },
+        { genre: 'Other', sold: 1500 }
+        ]
+        // 数据源必须是json
+
+        const chart=new G2.Chart({
+            container:'d1',
+            width:600,
+            height:300,
+            forceFit:true,
+            animate:false,
+            // 开启自适应
+        })
+        chart.source(data);
+        // 装填数据
+        chart.interval().position('genre*sold').color('genre');
+        // 由这两个数据决定位置
+        chart.render()
+    </script>
+</body>
+</html>
