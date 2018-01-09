@@ -1,21 +1,26 @@
 import React, { Component } from 'react'
 import Button from './button'
+import Row from './layout/row'
+import Col from './layout/col'
+import Radio from './radio/radio'
 
 class Index  extends Component { 
     constructor(props) { 
         super(props)
         this.state=({
             loading:false,
+            value:1
      });
 
 
      [
         'handleClick',
+        'onChange'
      ].forEach((method)=>this[method]=this[method].bind(this));
    } 
     handleClick(e){
         this.setState({
-            loading:!this.state.loading
+            loading:!this.state.loading,
         })
         // 模拟加载资源
         setTimeout(()=>{
@@ -24,6 +29,10 @@ class Index  extends Component {
             })
         },2000)
         
+    }
+    onChange(value){
+        console.log(value)
+        this.setState({value})
     }
     render() {
       return (
@@ -109,10 +118,59 @@ class Index  extends Component {
                 </Button> */}
 
                 <h1>按钮大小</h1>
-                <Button type="primary" size="large">大型按钮</Button>
+                {/* <Button type="primary" size="large">大型按钮</Button>
                 <Button type="primary">正常按钮</Button>
                 <Button type="primary" size="small">小型按钮</Button>
-                <Button type="primary" size="mini">超小按钮</Button>
+                <Button type="primary" size="mini">超小按钮</Button> */}
+            </div>
+            <div>
+                <h1>布局</h1>
+                <Row>
+                    {/* <Col span="4" gutter="20">
+                        1
+                    </Col>
+                    <Col span='8'>
+                        2
+                    </Col>
+                    <Col span='12'>
+                        3
+                    </Col> */}
+                    {/* 整个布局是24份的 */}
+                </Row>
+                {/* <Row>
+                    <Col xs="8" sm="6" md="4" lg="3"><div>1</div></Col>
+                    <Col xs="4" sm="6" md="8" lg="9"><div>2</div></Col>
+                    <Col xs="4" sm="6" md="8" lg="9"><div>1</div></Col>
+                    <Col xs="8" sm="6" md="4" lg="3"><div>2</div></Col>
+                </Row> */}
+            </div>
+            <div>
+                <h1>按钮</h1>
+                <Radio  
+                        checked={this.state.value===1}
+                        value="1"
+                        onChange={this.onChange}
+                >
+                    选项1
+                </Radio>
+                <Radio  
+                        // 使用形式如下
+                        value="2"
+                        checked={this.state.value===2}
+                        onChange={this.onChange}
+                        >
+                    选项2
+                </Radio>
+                {/* 值点完都要传到这个里面 ，适用于选项不多的情况，如果选项太多，建议使用select选项*/}
+                <Radio  
+                        // 使用形式如下
+                        value="3"
+                        disabled={this.state.value !==3}
+                        checked={this.state.value==3}
+                        onChange={this.onChange}
+                        >
+                    选项3
+                </Radio>
             </div>
 
         </div>

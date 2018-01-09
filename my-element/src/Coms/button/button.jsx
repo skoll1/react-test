@@ -43,7 +43,8 @@ class Button  extends Component {
       if(this.props.type){
           btnClass+=` el-button--${this.props.type}`
         //   注意这里的空格是为了让各个css有间隔
-      }else if(this.props.size){
+      }
+     if(this.props.size){
           btnClass+=` el-button--${this.props.size}`
       }
     

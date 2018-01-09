@@ -1,0 +1,13 @@
+.col-align-center{
+    align-self: center;
+}
+.col-align-flex-start{
+    align-self: flex-start;
+}
+.col-align-flex-end{
+    align-self:flex-end;
+}
+/* 这样做的坏处就是会引入很多不使用的css，后期一定要删除 */
+.el-radio:hover {
+
+}

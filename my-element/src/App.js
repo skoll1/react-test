@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'element-theme-default';
 import logo from './logo.svg';
 import Index from './Coms'
 import './App.css';
