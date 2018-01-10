@@ -1,15 +1,22 @@
 import React, { Component } from 'react'
-import Button from './button'
-import Row from './layout/row'
-import Col from './layout/col'
-import Radio from './radio/radio'
+// import Button from './button'
+// import Row from './layout/row'
+// import Col from './layout/col'
+// import Radio from './radio/radio'
+
+// import RadioGroup from './radio/radioGroup'
+import RadioButton from './radio/radioButton'
+
 
 class Index  extends Component { 
     constructor(props) { 
         super(props)
         this.state=({
             loading:false,
-            value:1
+            value:1,
+            radio1:'上海',
+            radio2:'杭州',
+            radio3:'北京'
      });
 
 
@@ -30,9 +37,11 @@ class Index  extends Component {
         },2000)
         
     }
-    onChange(value){
-        console.log(value)
-        this.setState({value})
+    onChange(key,value){
+    //    group的
+        this.setState({
+            [key]:value
+        })
     }
     render() {
       return (
@@ -125,7 +134,7 @@ class Index  extends Component {
             </div>
             <div>
                 <h1>布局</h1>
-                <Row>
+                {/* <Row> */}
                     {/* <Col span="4" gutter="20">
                         1
                     </Col>
@@ -136,7 +145,7 @@ class Index  extends Component {
                         3
                     </Col> */}
                     {/* 整个布局是24份的 */}
-                </Row>
+                {/* </Row> */}
                 {/* <Row>
                     <Col xs="8" sm="6" md="4" lg="3"><div>1</div></Col>
                     <Col xs="4" sm="6" md="8" lg="9"><div>2</div></Col>
@@ -146,23 +155,23 @@ class Index  extends Component {
             </div>
             <div>
                 <h1>按钮</h1>
-                <Radio  
+                {/* <Radio  
                         checked={this.state.value===1}
                         value="1"
                         onChange={this.onChange}
                 >
                     选项1
-                </Radio>
-                <Radio  
+                </Radio> */}
+                {/* <Radio  
                         // 使用形式如下
                         value="2"
                         checked={this.state.value===2}
                         onChange={this.onChange}
                         >
                     选项2
-                </Radio>
+                </Radio> */}
                 {/* 值点完都要传到这个里面 ，适用于选项不多的情况，如果选项太多，建议使用select选项*/}
-                <Radio  
+                {/* <Radio  
                         // 使用形式如下
                         value="3"
                         disabled={this.state.value !==3}
@@ -170,7 +179,28 @@ class Index  extends Component {
                         onChange={this.onChange}
                         >
                     选项3
-                </Radio>
+                </Radio> */}
+
+                <h2>按钮组</h2>
+                    {/* <RadioGroup  onChange={this.onChange.bind(this,'radio3')} value={this.state.radio1}> 
+                        <Radio value="上海" />
+                        <Radio value="北京" />
+                        <Radio value="广州" />
+                        <Radio value="深圳" />
+                    </RadioGroup> */}
+                <h2>RadioButton</h2>
+                <RadioButton value="上海" first={true}>
+                    上海
+                </RadioButton>
+                <RadioButton value="上海">
+                    上海
+                </RadioButton>
+                <RadioButton value="天津">
+                    天津
+                </RadioButton>
+                <RadioButton value="南京">
+                    南京
+                </RadioButton>
             </div>
 
         </div>

@@ -13,12 +13,20 @@ class Radio  extends Component {
      this.onFocus=this.onFocus.bind(this);
    } 
     handleChange(){
-        if(this.props.onChange){
-            console.log('click')
-            this.props.onChange(Number(this.props.value))
-            // 根据里面的true，false来把接收的
+        // if(this.props.onChange){
+        //     console.log('click')
+        //     this.props.onChange(Number(this.props.value))
+        //     // 根据里面的true，false来把接收的
+        // }
+
+        if(this.props.disabled){
+            return false;
+        }else if(this.props.onChange){
+                console.log('click')
+                this.props.onChange(Number(this.props.value))
+                // 根据里面的true，false来把接收的
+            }
         }
-    }
 
     onBlur(){
         // console.log('111')
@@ -48,7 +56,7 @@ class Radio  extends Component {
       })
       return (
         <label className="el-radio">
-                <span className={radioClass}>
+                <span className={radioClass} disabled>
                     <span 
                             
                             className="el-radio__inner"
