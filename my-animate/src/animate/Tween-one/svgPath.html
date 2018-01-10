@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>
+            path属性通过d来定义路径
+            <ul>
+                <li>
+                    M(20,20) 从20，20坐标为起点开始画线
+                </li>
+                <li>
+                    L(100,200) 从(100,100)到(100,200)画一条直线
+                </li>
+                <li>
+                    L(200,400) 从(100,200)到(200,400)化一条直线
+                </li>
+            </ul>
+        </li>
+        <li>
+            d一共有10个命令可以使用，下面五个是基础命令
+            <ul>
+                <li>
+                    M：移动到
+                </li>
+                <li>
+                    Z:闭合路径
+                </li>
+                <li>
+                    L:直线
+                </li>
+                <li>
+                    H:水平曲线(可以不用写y坐标)
+                </li>
+                <li>
+                    V:垂直曲线
+                </li>
+            </ul>
+        </li>
+        <li>
+            曲线
+            <ul>
+                <li>
+                        三次贝塞尔曲线。(x,y)表示的是曲线的终点，(x1,y1)是起点的控制点，(x2,y2)是终点的控制点。
+                        控制点描述的是曲线起始点的斜率，曲线上各个点的斜率，是从起点斜率到终点斜率的渐变过程。
+                        C x1 y1, x2 y2, x y
+                </li>
+                <li>
+                        <?xml version="1.0" standalone="no"?>
+
+                        <svg width="190px" height="160px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        
+                          <path d="M10 10 C 20 20, 40 20, 50 10" stroke="black" fill="transparent"/>
+                          <path d="M70 10 C 70 20, 120 20, 120 10" stroke="black" fill="transparent"/>
+                          <path d="M130 10 C 120 20, 180 20, 170 10" stroke="black" fill="transparent"/>
+                          <path d="M10 60 C 20 80, 40 80, 50 60" stroke="black" fill="transparent"/>
+                          <path d="M70 60 C 70 80, 110 80, 110 60" stroke="black" fill="transparent"/>
+                          <path d="M130 60 C 120 80, 180 80, 170 60" stroke="black" fill="transparent"/>
+                          <path d="M10 110 C 20 140, 40 140, 50 110" stroke="black" fill="transparent"/>
+                          <path d="M70 110 C 70 140, 110 140, 110 110" stroke="black" fill="transparent"/>
+                          <path d="M130 110 C 120 140, 180 140, 170 110" stroke="black" fill="transparent"/>
+                        </svg>
+                </li>
+                <li>
+                    d="起始点M  控制点x1,y1 控制点x2,y2  曲线关键点x,y"
+                </li>
+                <li>
+                    s 当一个点某一侧的控制点是它另一侧的控制点的对称（以保持斜率不变），可以使用S命令。简写的贝塞尔曲线命令。
+                    如果S命令跟在一个C命令或者另一个S命令的后面，它的第一个控制点，就会被假设成前一个控制点的对称点。如果S命令单独使用，前面没有C命令或者另一个S命令，那么它的两个控制点就会被假设为同一个点。
+                    
+                    S x2 y2, x y
+                </li>
+                <li>
+                        <?xml version="1.0" standalone="no"?>
+                        <svg width="190px" height="160px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80" stroke="black" fill="transparent"/>
+                        </svg>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
