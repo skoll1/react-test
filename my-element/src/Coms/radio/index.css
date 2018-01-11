@@ -3,3 +3,12 @@
     border-top-left-radius:2px;
     border-bottom-left-radius:2px;
 }
+.is-active{
+    color:#fff;
+    background-color:#20a0ff;
+    border-box:#20a0ff;
+    box-shadow: 1px 0 0 0 #20a0ff;
+}
+.is-active:hover{
+    color:#fff;
+}

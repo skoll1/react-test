@@ -1,72 +1,72 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import classname from 'classnames'
 import './index.css'
-
-import Radio from './radio.jsx'
 class RadioButton extends Component { 
-    static elementType='Radio'
+    static elementType='RadioButton'
     constructor(props) { 
         super(props)
-        this.state=({
-            checked:false,
-     })
+        
+     this.handleChange=this.handleChange.bind(this);
    }
-// 这样使用context真的没关系么？ ,炸掉了，this.context.component根本就不行，进行重构，这个方法我不要了。
-   parent() {
-    // return this.context.component;
-    }
-   size(){
-    //    return this.parent().props.size;
-   } 
-   isDisabled(){
-    //    return this.props.disabled||this.parent().props.disabled;
-   }
+
    activeStyle(){
       
-            // return {
-            //     backgroundColor:this.parent().props.fill||'',
-            //     borderColor:this.parent().props.fill||'',
-            //     color:this.parent().props.textColor||'',
-            // }
+            return {
+                backgroundColor:this.props.fill||'',
+                borderColor:this.props.fill||'',
+                color:this.props.textColor||'',
+            }
    }
-   componentDidMount(){
-       console.log(this.props)
-   }
-   onChange(value){
-        if(this.props.onChange&&!this.props.disabled){
-            this.setState({
-                checked:!this.state.checked
-            })
-            this.props.onChange(this.props.value)
-        }
+
+   handleChange(value){
+       if(this.props.disabled){
+           return false;
+       }else if(this.props.onChange){
+           console.log('我要传东西出去了')
+           this.props.onChange(this.props.value)
+       }else{
+           console.log('请传入函数')
+       }
    }
     render() {
       let radioClass=classname({
         'el-radio-button':true,
-        'is-active':this.props.checked
       })
 
       let spanClass=classname({
         'el-radio-button__inner':true,
-        'first':this.props.first
+        'first':this.props.first,
+        'is-active':this.props.checked,
       })
 
       if(this.props.size){
-        radioClass+= ` el-radio-button--${this.size()}`
+        radioClass+= ` el-radio-button--${this.props.size}`
       }
+
       return (
         <label 
                 className={radioClass}
-                checked={this.state.checked}
+                checked={this.props.checked}
+                // 原来他的checked是根据radio里面传来的state
                 disabled={this.props.disabled}
-                onClick={this.onChange.bind(this)}
+                onClick={this.handleChange.bind(this)}
         >
-            <span className={spanClass} style={this.state.checked?this.activeStyle():{}}>
+            <span className={spanClass} style={this.props.checked?this.activeStyle():{}}>
                 {this.props.children||this.props.value}
             </span>
         </label>
       )
     }
 }
-export default RadioButton ;
+export default RadioButton;
+RadioButton.defaultProps={
+    checked:true,
+},
+RadioButton.propTypes={
+    // value:PropTypes.oneOfType([PropTypes.string,PropsTypes.number,PropTypes.bool]),
+    disabled:PropTypes.bool,
+    name:PropTypes.string,
+    // name用于表单提交之后想服务器端传送数据，或者在js引用表单数据，注意的是表单提交之后，只有表单元素的name属性才会传递数值。
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+}

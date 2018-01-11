@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 // import Col from './layout/col'
 // import Radio from './radio/radio'
 
-// import RadioGroup from './radio/radioGroup'
+import RadioGroup from './radio/radioGroup'
 import RadioButton from './radio/radioButton'
 
 
@@ -14,9 +14,8 @@ class Index  extends Component {
         this.state=({
             loading:false,
             value:1,
-            radio1:'上海',
-            radio2:'杭州',
-            radio3:'北京'
+            city:'上海',
+            radio:'上海'
      });
 
 
@@ -37,10 +36,21 @@ class Index  extends Component {
         },2000)
         
     }
-    onChange(key,value){
+    onChange(value){
     //    group的
+        console.log(value)
         this.setState({
-            [key]:value
+            city:value
+        })
+    }
+    onChangeGroup(key,value,name){
+        // 传值他的顺序是可以颠倒么？看一下事件的传值。。。
+        console.log(key)
+        console.log(value)
+        console.log(name)
+        // console.log(this)
+        this.setState({
+            [key]:value,
         })
     }
     render() {
@@ -182,25 +192,43 @@ class Index  extends Component {
                 </Radio> */}
 
                 <h2>按钮组</h2>
-                    {/* <RadioGroup  onChange={this.onChange.bind(this,'radio3')} value={this.state.radio1}> 
-                        <Radio value="上海" />
-                        <Radio value="北京" />
-                        <Radio value="广州" />
-                        <Radio value="深圳" />
-                    </RadioGroup> */}
+                    <RadioGroup  
+                                onChange={this.onChangeGroup.bind(this,'radio1','libateer')} 
+                                // 这里要传两个参数，一个是出来的值，一个是key值，在这个里面是radio1,这里这个this为什么会是里面出来的值呢？
+                                value={this.state.radio1}
+                    > 
+                        <RadioButton value="上海" size="large" />
+                        <RadioButton value="北京" />
+                        <RadioButton value="广州" />
+                        <RadioButton value="深圳" />
+                    </RadioGroup>
                 <h2>RadioButton</h2>
-                <RadioButton value="上海" first={true}>
+                {/* <RadioButton value="上海" 
+                             onChange={this.onChange}
+                             checked={this.state.city==='上海'}
+                             first={true}
+                             size="large"
+                             >
                     上海
                 </RadioButton>
-                <RadioButton value="上海">
-                    上海
+                <RadioButton value="巴厘岛"
+                             checked={this.state.city==='巴厘岛'}
+                             onChange={this.onChange}
+                             size="small"
+                             
+                >
+                    土耳其
                 </RadioButton>
-                <RadioButton value="天津">
+                <RadioButton value="天津"
+                             checked={this.state.city==='天津'}
+                             onChange={this.onChange}>
                     天津
                 </RadioButton>
-                <RadioButton value="南京">
+                <RadioButton value="南京"
+                             checked={this.state.city==='南京'}
+                             onChange={this.onChange}>
                     南京
-                </RadioButton>
+                </RadioButton> */}
             </div>
 
         </div>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import classname from 'classnames'
-import Proptypes from 'prop-types'
+import PropTypes from 'prop-types'
 
-class Radio  extends Component { 
+class Radio  extends Component {
+    static elementType='Radio' 
     constructor(props) { 
         super(props)
         this.state={
@@ -24,7 +25,7 @@ class Radio  extends Component {
         }else if(this.props.onChange){
                 console.log('click')
                 this.props.onChange(Number(this.props.value))
-                // 根据里面的true，false来把接收的
+                // 根据里面的true，false来把接收的,这个万一传入的不是number该怎么办
             }
         }
 
@@ -84,10 +85,10 @@ class Radio  extends Component {
     }
 }
 export default Radio ;
-Radio.Proptypes={
-    value:Proptypes.oneOfType([Proptypes.string,Proptypes.number]).isRequired,
-    onChange:Proptypes.func,
-    disabled:Proptypes.bool,
-    checked:Proptypes.bool,
+Radio.PropTypes={
+    value:PropTypes.oneOfType([Proptypes.string,Proptypes.number]).isRequired,
+    onChange:PropTypes.func,
+    disabled:PropTypes.bool,
+    checked:PropTypes.bool,
 }
 // 这个好像是没法加默认属性的
