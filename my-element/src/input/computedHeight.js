@@ -1,4 +1,4 @@
-let hiddenTextareas;
+let hiddenTextarea;
 
 const HIDDEN_STYLE=`
     height:0 !import;
@@ -34,9 +34,14 @@ function f1(node){
 
     const boxSizing=style.getPropertyValue('box-sizing');
     const paddingSize=(
-        parseFloat(style.getPropertyValue('border-bottom-width'))+parseFloat(style.getPropertyValue('border-top-width'))
+        parseFloat(style.getPropertyValue('border-bottom-width')) +
+        parseFloat(style.getPropertyValue('border-top-width'))
     );
 
+    const borderSize=(
+      parseFloat(style.getPropertyValue('border-bottom-width'))+
+      parseFloat(style.getPropertyValue('border-top-width'))
+    )
     const contextStyle=CONTEXT_STYLE.map(name=>`${name}:${style.getPropertyValue(name)}`).join(';');
 
     return {
@@ -50,7 +55,7 @@ function f1(node){
 
 export default function calcTextareaHeight(targetNode,minRows,maxRows){
     if (!hiddenTextarea) {
-      hiddenTextarea = document.createElement('textarea');
+      var hiddenTextarea = document.createElement('textarea');
       document.body && document.body.appendChild(hiddenTextarea);
     }
   

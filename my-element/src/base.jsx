@@ -23,6 +23,6 @@ Input.defaultProps={
    
 }
 
-Input.Proptypes={
+Input.propTypes={
 
 }
