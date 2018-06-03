@@ -11,7 +11,8 @@ class Index  extends Component {
     render() {
       return (
         <div className=''>
-                <Input />
+          <h1>测试input</h1>
+          <Input placeholder="这就是需要输入东西的输入框么？" />
         </div>
       )
     }
