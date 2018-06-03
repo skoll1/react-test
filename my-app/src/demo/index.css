@@ -1,5 +1,8 @@
-.mouseWhell{
-    height: 3000px;
-    width: 500px;
-    background: rgb(31, 196, 94);
+.demo1{
+    width:100%;
+    margin: 0 auto;
+    border:1px solid rgb(245, 72, 72);
+}
+.demo1 img{
+    max-width:100%;
 }

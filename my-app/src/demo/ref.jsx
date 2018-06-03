@@ -24,18 +24,20 @@ import React, { Component } from 'react'
 
 class Refs extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.text=React.createRef()
         this.state = ({
             name:'libateer'
         })
     }
     componentDidMount() {
-        this.input.focus();
+        // this.input.focus();
     }
     render() {
         return (
             <div className=''>
-                <input type="text" ref={(input) => { this.input = input }} placeholder=".....haha!" defaultValue="Bob" />
+                {/* <input type="text" ref={(input) => { this.input = input }} placeholder=".....haha!" defaultValue="Bob" /> */}
+                <input type="text" ref={this.text}/>
             </div>
         )
     }

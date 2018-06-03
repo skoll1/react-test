@@ -16,11 +16,19 @@ class Row  extends Component {
         if(this.props.gutter){
            style.marginLeft=`-${this.props.gutter/2}px`
            style.marginRight=style.marginLeft
-
+        }
+        if(this.props.width){
+            style.width=`${this.props.width}px`
+        }
+        if(this.props.height){
+            style.height=`${this.props.height}px`
+        }
+        if(this.props.backgroundcolor){
+            style.backgroundColor=`${this.props.backgroundcolor}`
         }
         return style;
     }
-    // 辅助计算函数
+    // 辅助计算函数-控制间隔
 
     render() {
       let btnClass=classname({
@@ -36,10 +44,8 @@ class Row  extends Component {
       if(this.props.align){
           btnClass+= ` is-align-${this.props.align}`
       }
-     
-
-
-
+    //也就是说，这就是返回样式的两种方法，一种是根据传入参数的值直接在getStyle函数里面进行js加工，一种就是替换之前写好的css表
+    
       const PropDiv=this.props.tag?this.props.tag:'div'
       console.log(PropDiv)
       return (
@@ -59,11 +65,8 @@ Row.defaultProps={
     // direction:'row',
     // 决定排列顺序
     // 因为他的使用场景决定了只是单行的UI框架，所以不存在所谓的整体布局下的列排布
-    // 包括以下属性
-    // flex-wrap
-    // align-content
 
-    // 相应的，项目属性也要有相应的取舍
+    // 那这样怎么渲染换行的情况，需要单独做一个列表么？
 
 }
 Row.Proptypes={

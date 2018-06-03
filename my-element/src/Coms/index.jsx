@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-// import Button from './button'
-// import Row from './layout/row'
-// import Col from './layout/col'
-// import Radio from './radio/radio'
+import Button from './button'
 
-import RadioGroup from './radio/radioGroup'
-import RadioButton from './radio/radioButton'
+import Row from './layout/row'
+// 负责所有的横排显示
+import Col from './layout/col'
+// 负责所有的竖排显示
+
+// import Radio from './radio/radio'
+// import RadioGroup from './radio/radioGroup'
+// import RadioButton from './radio/radioButton'
 
 
 class Index  extends Component { 
@@ -53,14 +56,19 @@ class Index  extends Component {
             [key]:value,
         })
     }
+    outHandleClick(e){
+        console.log('outer')
+        console.log(e)
+    }
     render() {
       return (
         <div className=''>
             <h1>框架开始工作</h1>
-           
+           {/* 按钮部分 */}
             <div>
-                {/* <h1>基础用法</h1>
-                <Button>
+                
+                
+                {/* <Button plain={true}>
                    type=null
                 </Button>
 
@@ -68,21 +76,22 @@ class Index  extends Component {
                     type=primary
                 </Button>
 
-                <Button type="text">
+                <Button type="text" disabled={true}>
                    type=text
                 </Button>
                 <h1>禁用状态</h1>
-                <Button type="text" >
+                <Button type="text" disabled={true}>
                     type=text
-                </Button>
-                <h1>
+                </Button> */}
+                {/* <h1>
                     颜色倾向
                 </h1>
-                <Button type="success">
+                <Button type="success" onClick={this.outHandleClick}>
                     type=success
                 </Button>
-                <Button type="warning" >
-                    type=warning
+                <Button type="warning" 
+                    loading={true}
+                    >
                 </Button>
                 <Button type="danger" >
                     type=danger
@@ -137,15 +146,18 @@ class Index  extends Component {
                 </Button> */}
 
                 <h1>按钮大小</h1>
-                {/* <Button type="primary" size="large">大型按钮</Button>
-                <Button type="primary">正常按钮</Button>
+                {/* <Button type="primary" size="large" icon="edit">大型按钮</Button>
+                <Button type="primary" icon="menu">正常按钮</Button>
                 <Button type="primary" size="small">小型按钮</Button>
                 <Button type="primary" size="mini">超小按钮</Button> */}
             </div>
+
+
+
+            {/* <h1>布局</h1> */}
             <div>
-                <h1>布局</h1>
-                {/* <Row> */}
-                    {/* <Col span="4" gutter="20">
+                <Row gutter="20" backgroundcolor="red" width="1000" height="200" justify="space-between" align='center'>
+                    {/* <Col span="4" width="100" height="100" backgroundcolor="green">
                         1
                     </Col>
                     <Col span='8'>
@@ -155,16 +167,17 @@ class Index  extends Component {
                         3
                     </Col> */}
                     {/* 整个布局是24份的 */}
-                {/* </Row> */}
+                </Row>
                 {/* <Row>
-                    <Col xs="8" sm="6" md="4" lg="3"><div>1</div></Col>
-                    <Col xs="4" sm="6" md="8" lg="9"><div>2</div></Col>
+                    <Col xs="8" sm="6" md="4" lg="3" offset="1" order="2"><div>1</div></Col>
+                    <Col xs="4" sm="6" md="8" lg="9" order="1"><div>2</div></Col>
                     <Col xs="4" sm="6" md="8" lg="9"><div>1</div></Col>
                     <Col xs="8" sm="6" md="4" lg="3"><div>2</div></Col>
                 </Row> */}
             </div>
+
+            {/* <h1>input</h1> */}
             <div>
-                <h1>按钮</h1>
                 {/* <Radio  
                         checked={this.state.value===1}
                         value="1"
@@ -192,7 +205,7 @@ class Index  extends Component {
                 </Radio> */}
 
                 <h2>按钮组</h2>
-                    <RadioGroup  
+                    {/* <RadioGroup  
                                 onChange={this.onChangeGroup.bind(this,'radio1','libateer')} 
                                 // 这里要传两个参数，一个是出来的值，一个是key值，在这个里面是radio1,这里这个this为什么会是里面出来的值呢？
                                 value={this.state.radio1}
@@ -201,7 +214,7 @@ class Index  extends Component {
                         <RadioButton value="北京" />
                         <RadioButton value="广州" />
                         <RadioButton value="深圳" />
-                    </RadioGroup>
+                    </RadioGroup> */}
                 <h2>RadioButton</h2>
                 {/* <RadioButton value="上海" 
                              onChange={this.onChange}

@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+// 使用组合而不是继承来实现功能
 
-class Extend  extends Component { 
+// 组件可以接受任何的道具，包括原始值，react元素或者函数。
+//如果想在组件之间重用非UI元素，建议将其压缩到单独的js模块中
+class Extend extends Component { 
     constructor(props) { 
         super(props)
         this.state=({
@@ -8,7 +11,7 @@ class Extend  extends Component {
      })
    } 
     render() {
-        const children=React.Children.toArray(this.props.children);
+       const children=React.Children.toArray(this.props.children);
        return(
            <div className='test'>
                <div className="left">

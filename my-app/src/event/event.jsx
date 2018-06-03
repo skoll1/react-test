@@ -13,6 +13,7 @@ class IMG extends Component{
         const imgWidth=this.img.naturalWidth;
         
         console.log(imgWidth)
+        console.log(this.state)
     }
     _imgOnLoad(){
         console.log('ok')
@@ -21,8 +22,8 @@ class IMG extends Component{
         console.log(imgWidth)
 
     }
-    _onAbort(){
-        console.log('abort')
+    _onMouseEnter(){
+        console.log('mouseEnter')
     }
     _onError(){
         console.log('onError');
@@ -34,7 +35,8 @@ class IMG extends Component{
     render(){
         return(
             <div className="dom1">
-                <img ref={(img)=>{this.img=img}} onLoad={this._imgOnLoad} onAbort={this.onAbort} onError={this._onError} onBlur={this._onBlur} src="https://c10.neweggimages.com.cn/Hero_Banner/171215_MonAndBaby40off/171215_MonAndBaby40off@Web.jpg" alt=""/>
+                <img ref={(img)=>{this.img=img}} onLoad={this._imgOnLoad} onAbort={this.onAbort} onError={this._onError} onBlur={this._onBlur} 
+                src={this.state.url} alt=""/>
             </div>
         )
     }

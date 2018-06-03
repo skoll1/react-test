@@ -7,18 +7,59 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>
-        参考
-    </h1>
+    <h1>react事件系统</h1>
     <ul>
         <li>
-            React.Children的一些方法
+            合成事件syntheticEvent,是对原生事件的抽象封装，抹平不同跨浏览器的差异
         </li>
         <li>
-            react-dom的三个方法。
+            react的事件系统还使用了事件池来存放事件以提高性能，减少内存开销
         </li>
         <li>
-            
+            ReactEventListener：监听dom事件
+        </li>
+        <li>
+            ReactEventEmitter:负责将事件传递给eventpluginHub
+        </li>
+        <li>
+            EventPluginHub:事件插件容器，负责容纳所有的事件插件
+        </li>
+        <li>
+            eventPlugin:将原生事件转为react自定义的合成事件，并搜索这个事件都有哪些元素在监听和监听的回调，最后在应用层级触发回调
+        </li>
+        <li>
+            react会在document层面统一监听事件，而不会在具体的document元素上添加eventlistner,这样避免了在复杂ui情况下给数量众多的dom元素添加eventlistener的过程。react统一在document层面监听事件并寻找各个监听了事件的component，在执行他们的回调
+        </li>
+        <li>
+            <ul>
+                <li>
+                    reactdomfibercomponent模块初始化virtual dom节点的属性
+                </li>
+                <li>
+                    reactbrowsereventemitter/reactdomeventlistener/eventlistener模块会对用户设置的事件进行监听
+                </li>
+                <li>
+                    原生事件触发
+                </li>
+                <li>
+                    reactdomeventlistener将原生事件交给eventpluginhub处理
+                </li>
+                <li>
+                    EventPluginHub让各个相关的eventolugin生成合成事件
+                </li>
+                <li>
+                    eventplughub让合成事件队列里的各个合成事件执行相应的回调
+                </li>
+            </ul>
+        </li>
+        <li>
+            我们可以对任何细节级使用相同的组件抽象，一个按钮，一个窗体，一个对话框，一个屏幕。在react中，所有的这些通常都表示为组件。
+        </li>
+        <li>
+            提取组件，不要害怕将组件分解为更小的组件
+        </li>
+        <li>
+            任何状态总是由某个特定组件拥有，并且从该状态派生的任何数据或ui只能影响树中“在其下”的组件
         </li>
     </ul>
 </body>

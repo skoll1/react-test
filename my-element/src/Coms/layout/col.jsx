@@ -17,8 +17,20 @@ class Col  extends Component {
             style.paddingLeft=`${this.props.gutter/2}px`
             style.paddingRight=`${this.props.gutter/2}px`
         }
-
+        if(this.props.width){
+            style.width=`${this.props.width}px`
+        }
+        if(this.props.height){
+            style.height=`${this.props.height}px`
+        }
+        if(this.props.backgroundcolor){
+            style.backgroundColor=`${this.props.backgroundcolor}`
+        }
+        if(this.props.order){
+            style.order=`${this.props.order}`
+        }
         return style;
+        // 那是这样加行内样式css简单，还是用css表简单.css方面的性能优化
     }
     render() {
 
@@ -30,12 +42,9 @@ class Col  extends Component {
           btnClass+= ` el-col-${this.props.span}`
       }
 
-      if(this.props.order){
-          btnClass+= ` el-col-order${this.props.order}`
-      }
-
       if(this.props.offset){
           btnClass+= ` el-col-offset-${this.props.offset}`
+        //   调节了marginleft 百分比
       }
       
       if(this.props.xs){
@@ -51,6 +60,9 @@ class Col  extends Component {
         btnClass+= ` el-col-lg-${this.props.lg}`
      }
 
+    //调节大小的一种方法
+
+     
      if(this.props.align){
          btnClass+= ` el-col-align-${this.props.align}`
      }
