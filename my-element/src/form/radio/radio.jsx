@@ -1,58 +1,50 @@
 import React, { Component } from 'react'
 import classname from 'classnames'
 import PropTypes from 'prop-types'
+// 组件做的事：接收点击，传出去点的值
+// 他的设计目的是参考radio，所有的选项中选择一个来实现。
 
 class Radio  extends Component {
     static elementType='Radio' 
+
     constructor(props) { 
         super(props)
         this.state={
-            focus:true,
+            // checked:this.getChecked(props),
+            checked:false,
+            focus:false,
      }
      this.handleChange=this.handleChange.bind(this)
-     this.onBlur=this.onBlur.bind(this);
-     this.onFocus=this.onFocus.bind(this);
-   } 
-    handleChange(){
-        // if(this.props.onChange){
-        //     console.log('click')
-        //     this.props.onChange(Number(this.props.value))
-        //     // 根据里面的true，false来把接收的
-        // }
-
-        if(this.props.disabled){
-            return false;
-        }else if(this.props.onChange){
-                console.log('click')
-                this.props.onChange(Number(this.props.value))
-                // 根据里面的true，false来把接收的,这个万一传入的不是number该怎么办
-            }
-        }
-
+     
+   }
     onBlur(){
-        // console.log('111')
-        //这两个事件都不会输出东西
         this.setState({
             focus:false
         })
     }
-
     onFocus(){
-        // console.log('111')
         this.setState({
-            focus:true
+            foucus:true
         })
     }
-
-
+    handleChange(){
+        const checked=!this.props.isChecked
+        if(checked&&!this.props.disabled){
+            if(this.props.onChange){
+                this.props.onChange(this.props.value)
+            }
+        }else if(!this.props.disabled){
+            this.props.onChange('null')
+        }
+    }
     render() {
-      const {focus} =this.state;
-      const {disabled,value,children,checked} =this.props;
+      const {focus,checked} =this.state;
+      const {disabled,value,children,isChecked} =this.props;
 
       let radioClass=classname({
             'el-radio__input':true,
             'is-disabled':disabled,
-            'is-checked':checked,
+            'is-checked':isChecked,
             'is-focus':focus
       })
       return (
@@ -66,6 +58,8 @@ class Radio  extends Component {
                             onBlur={this.onBlur}
                             ></span>
                     {/* 页面上显示的是这个 */}
+
+
                     {/* <input 
                             type="radio" 
                             checked={checked}
@@ -74,7 +68,7 @@ class Radio  extends Component {
                             style={{width:15,height:15,zIndex:0}}
                             onChange={this.handleChange}
                             /> */}
-                    {/* 这个被隐藏 ,那我可以直接抛弃原来的样式从而实现更好的效果*/}
+                    {/* 这个被隐藏 ,那我可以直接抛弃原来的样式从而实现更好的效果,显示和需要触发的事件都绑定到上面的span元素上面*/}
                 </span>
                 <span className="el-radio__label">
                     {children||value}
@@ -86,7 +80,7 @@ class Radio  extends Component {
 }
 export default Radio ;
 Radio.PropTypes={
-    value:PropTypes.oneOfType([Proptypes.string,Proptypes.number]).isRequired,
+    value:PropTypes.oneOfType([PropTypes.string,PropTypes.number]).isRequired,
     onChange:PropTypes.func,
     disabled:PropTypes.bool,
     checked:PropTypes.bool,

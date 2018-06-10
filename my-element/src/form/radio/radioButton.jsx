@@ -11,7 +11,6 @@ class RadioButton extends Component {
    }
 
    activeStyle(){
-      
             return {
                 backgroundColor:this.props.fill||'',
                 borderColor:this.props.fill||'',
@@ -23,7 +22,6 @@ class RadioButton extends Component {
        if(this.props.disabled){
            return false;
        }else if(this.props.onChange){
-           console.log('我要传东西出去了')
            this.props.onChange(this.props.value)
        }else{
            console.log('请传入函数')
@@ -32,6 +30,7 @@ class RadioButton extends Component {
     render() {
       let radioClass=classname({
         'el-radio-button':true,
+        'is-active':this.props.checked
       })
 
       let spanClass=classname({
@@ -47,7 +46,6 @@ class RadioButton extends Component {
       return (
         <label 
                 className={radioClass}
-                checked={this.props.checked}
                 // 原来他的checked是根据radio里面传来的state
                 disabled={this.props.disabled}
                 onClick={this.handleChange.bind(this)}

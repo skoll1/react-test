@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 // 实现这个组件的必要性，为了调用组件更加方便。使用更加方便。当多个单个组件大量使用的时候。
 // 这样的话使用很是麻烦，要实现一组选项的话需要做的东西太多了，每个都需要绑定这些东西
@@ -23,53 +24,44 @@ class RadioGroup  extends Component {
             this.props.onChange(value);
         }
     }
-    componentDidMount(){
-        // console.log(value)
+
+    getChileContext(){
+        return {
+            component:this
+        }
     }
+   
     render() {
       return (
         <div className='el-radio-group'>
             {/* 这里不再仅仅是显示this.props.children,还需要判断 */}
            {
                React.Children.map(this.props.children,(element,index)=>{
-                   let isChecked;
                    if(!element){
                        return null
                    }
-                   if(index==0){
-                        isChecked=true
-                   }else{
-                       isChecked=false
-                   }
+                //    if(index==0){
+                //         isChecked=true
+                //    }else{
+                //        isChecked=false
+                //    }
+                // 这一段没看懂
+
                    const {elementType}=element.type;
 
                    if(elementType!=='Radio' && elementType!=='RadioButton'){
                        return null
                    }
 
-                //    return React.cloneElement(element,Object.assign({},element.props,{
-                //        onChange:this.onChange.bind(this),
-                //        model:this.value,
-                //        size:this.size,
-                //        checked:this.props.value===element.props.valu  
-                //    }
-                
-
-                //    return React.cloneElement(element,{'index':index})
-                // 初级版本
-                    
                     return React.cloneElement(element,Object.assign({},element.props,{
-                        // 此处的element.props是为了给子元素留出一个自定义的接口。比如我可以在这个子组件里面加上一个size。
-                        'index':index,
+                        // 此处的element.props是为了给子元素留出一个自定义的接口。比如我可以在这个子组件里面加上一个size.也就是说扩展方面还可以从这里添加参数
+                       
                          onChange:this.onChange,
                          //这个仅仅是起了一个连接的作用。
-                           
-                         checked:this.props.value===element.props.value     
+                        
+                         isChecked:this.props.value===element.props.value,
+                         size:this.props.size  
                     }))
-                
-                //    console.log(element)
-                //    console.log(this.props.children)
-                // 这两个值是一样的   
                })
            }
         </div>
@@ -79,3 +71,15 @@ class RadioGroup  extends Component {
 export default RadioGroup ;
 
 // reactClone
+// RadioGroup.childContextTypes = {
+//     component: PropTypes.any
+//   };
+  
+RadioGroup.propTypes = {
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    disabled: PropTypes.bool,
+    size: PropTypes.string,
+    textColor: PropTypes.string,
+    fill: PropTypes.string,
+    onChange: PropTypes.func
+}
