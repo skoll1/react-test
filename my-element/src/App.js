@@ -7,7 +7,8 @@ import 'element-theme-default';
 
 
 // import Index from './form/radio/index'
-import Index from './form/input'
+// import Index from './form/input'
+import Index from './form/checkbox'
 import './App.css';
 
 class App extends Component {
