@@ -8,7 +8,10 @@ import 'element-theme-default';
 
 // import Index from './form/radio/index'
 // import Index from './form/input'
-import Index from './form/checkbox'
+// import Index from './form/checkbox'
+
+// 动画
+import Index from './animate/index'
 import './App.css';
 
 class App extends Component {
